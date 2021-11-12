@@ -1,0 +1,29 @@
+# Master
+1.  sudo bash
+2.  hostname puppet
+3.  echo "puppet" >> /etc/hostname
+4.  echo $(curl http://169.254.169.254/latest/meta-data/public-ipv4) puppet >> /etc/hosts
+5.  curl -JLO 'https://pm.puppet.com/cgi-bin/download.cgi?dist=ubuntu&rel=18.04&arch=amd64&ver=latest'
+6.  tar -xvf puppet-enterprise-2021.4.0-ubuntu-18.04-amd64.tar.gz 
+7.  ./puppet-enterprise-2021.4.0-ubuntu-18.04-amd64/puppet-enterprise-installer 
+8.  puppet infrastructure console_password --password=your_password_here
+9.  puppet agent -t
+10. puppet agent -t
+11. cat >>/etc/puppetlabs/code/environments/production/manifests/site.pp <<EOF
+    file {'/tmp/it-works.txt':
+	    ensure  => present,
+        mode    => '0644',
+        content => "It works on ${ipaddress_eth0}!\n",
+    }
+EOF
+12. systemctl reload puppetserver
+
+# Agent
+1.  hostname webserver1
+2.  echo "webserver1" >> /etc/hostname
+3.  echo $(curl http://169.254.169.254/latest/meta-data/public-ipv4) webserver1 >> /etc/hosts
+4.  echo [puppet master private ip] puppet >> /etc/hosts
+5.  curl -k https://puppet:8140/packages/current/install.bash | sudo bash
+6.  Go to https:[puppet master public ip] and sign the certificate
+7.  puppet agent -t
+8.  cat /tmp/it-works.txt
