@@ -2,9 +2,9 @@
 
 # Update Package Repositories and automatically say yes to any prompts (-y)
 yum update -y
-# Install EPEL and wget
+# Install EPEL, wget and git
 amazon-linux-extras install epel  -y
-yum install wget -y
+yum install wget git -y
 # Install openjdk-11 (again accepting prompts automatically)
 amazon-linux-extras install java-openjdk11 -y
 
