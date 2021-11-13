@@ -1,4 +1,4 @@
-output "public_ip" {
-    description = "Public IP of the Jenkins Instance"
-    value = aws_eip.jenkins.public_ip
+output "public_url" {
+  description = "Public URL of the Jenkins Instance"
+  value       = "http://${aws_eip.jenkins.public_ip}:8080"
 }
