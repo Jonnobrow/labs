@@ -10,3 +10,7 @@ A collection of guides and labs.
     - Simple Python Flask application for demo purposes
     - Pre-written Dockerfile with comments
     - Instructions on building, running and pushing the image
+- **Jenkins Setup** ([here](./jenkins-setup/)):
+    - Deploy infrastructure for Jenkins in AWS
+    - Install Jenkins automatically
+    - Create a simple pipeline to test that everything works
